@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
 public class WireSim : MonoBehaviour
 {
     public GameObject cylinder;
@@ -47,11 +48,11 @@ public class WireSim : MonoBehaviour
 
     public static float LognormalRandom(float mean, float stdDev)
     {
-        Random rnd = new Random();
+        System.Random rnd = new System.Random();
         float mu = Mathf.Log((mean * mean) / Mathf.Sqrt((stdDev * stdDev) + (mean * mean)));
         float sigma = Mathf.Sqrt(Mathf.Log((stdDev * stdDev) / (mean * mean) + 1));
         float random = rnd.NextSingle();
-        float lognormal = Mathf.Exp(mu + sigma * Mathf.Sqrt(-2 * Mathf.Log(random)));
+        float lognormal = Mathf.Exp(mu  + sigma * Mathf.Sqrt(-2 * Mathf.Log(random)));
         return lognormal;
     }
 
