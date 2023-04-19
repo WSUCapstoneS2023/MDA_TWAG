@@ -8,7 +8,7 @@ using SimInfo;
 
 public class SceneHandler : MonoBehaviour
 {
-    
+
     private Scene loadedScene;
     public string sceneName;
     public int sceneNum;
@@ -41,24 +41,22 @@ public class SceneHandler : MonoBehaviour
             simState.SaveSimToJSON(jsonPath);
         }
 
-        WhiskerCounteText.text =simState.WhiskerCount.ToString();
+        WhiskerCounteText.text = simState.WhiskerCount.ToString();
         LengthSigmaText.text = simState.LengthSigma.ToString();
         LengthMuText.text = simState.LengthMu.ToString();
         WidthSigmaText.text = simState.WidthSigma.ToString();
         WidthMuText.text = simState.WidthMu.ToString();
         SpawnAreaSizeText.text = simState.spawnAreaSize.ToString();
-        
+
         LoadScene(sceneNum);
         // Set the default value of the text field
 
-
         // Get the float value from the text field
-        getSimInputs(); 
-
+        //getSimInputs(); 
     }
 
 
-    public void getSimInputs(){
+    public void getSimInputs() {
         if (int.TryParse(WhiskerCounteText.text, out int result))
         {
             simState.WhiskerCount = result;
@@ -127,7 +125,7 @@ public class SceneHandler : MonoBehaviour
         }
     }
 
-    IEnumerator LoadSceneAsync(int buildnum )
+    IEnumerator LoadSceneAsync(int buildnum)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(buildnum, LoadSceneMode.Additive);
 
@@ -143,7 +141,7 @@ public class SceneHandler : MonoBehaviour
     public void ReloadScene(int buildnum)
     {
         loadedScene = SceneManager.GetSceneByBuildIndex(buildnum);
-        if(isSceneLoaded)
+        if (isSceneLoaded)
         {
             SceneManager.UnloadSceneAsync(loadedScene);
 

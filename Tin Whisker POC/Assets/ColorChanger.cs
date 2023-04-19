@@ -6,6 +6,7 @@ public class ColorChanger : MonoBehaviour
 {
     public GameObject object1;
     public GameObject object2;
+    public Color Original;
     public Color targetColor;
 
     private MeshRenderer objectRenderer;
@@ -15,8 +16,14 @@ public class ColorChanger : MonoBehaviour
     void Start()
     {
         objectRenderer = GetComponent<MeshRenderer>();
+        Original = objectRenderer.material.color;
         hasCollidedWithObject1 = false;
         hasCollidedWithObject2 = false;
+    }
+
+    void Update()
+    {
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,4 +45,21 @@ public class ColorChanger : MonoBehaviour
         }
     }
 
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == object1)
+        {
+            hasCollidedWithObject1 = false;
+        }
+
+        if (collision.gameObject == object2)
+        {
+            hasCollidedWithObject2 = false;
+        }
+
+        if (!hasCollidedWithObject1 || !hasCollidedWithObject2)
+        {
+            objectRenderer.material.color = Original;
+        }
+    }
 }
