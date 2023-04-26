@@ -80,7 +80,8 @@ public class LoadFile : MonoBehaviour
             }
             model = new OBJLoader().Load(textStream);
             DoublicateFaces();
-            model.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); // set the position of parent model. Reverse X to show properly 
+            model.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); // set the position of parent model. Reverse X to show properly
+            model.transform.Rotate(270.0f, 0.0f, 0.0f, Space.Self);
             
 
         }
